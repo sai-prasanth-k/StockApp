@@ -10,7 +10,6 @@ import com.saiprasanth.stockapp.ui.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,6 +20,10 @@ class StockListingViewModel @Inject constructor(
     var state by mutableStateOf(StockListingState())
 
     private  var searchJob : Job? = null
+
+    init {
+        getStockListings()
+    }
     fun onEvent(event: StockListingEvent){
         when(event){
             is StockListingEvent.Refresh -> {
