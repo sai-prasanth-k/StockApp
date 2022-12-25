@@ -1,5 +1,7 @@
 package com.saiprasanth.stockapp.domin.model
 
-data class StockLisiting(
-    val name : String
+data class StockListing(
+    val name : String,
+    val symbol : String,
+    val exchange : String
 )
