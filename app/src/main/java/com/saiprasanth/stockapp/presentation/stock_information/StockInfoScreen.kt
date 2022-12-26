@@ -17,13 +17,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 
 @Composable
 @Destination
 fun StockInfoScreen(
     symbol : String,
-    viewModel: StockInfoViewModel
+    viewModel: StockInfoViewModel = hiltViewModel()
 ){
     val state = viewModel.state
     Column(

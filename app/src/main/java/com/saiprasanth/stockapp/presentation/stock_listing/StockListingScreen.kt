@@ -12,6 +12,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.ramcosta.composedestinations.annotation.Destination
@@ -25,7 +26,7 @@ import com.saiprasanth.stockapp.presentation.stock_information.DetailScreen
 @Destination
 fun StockListingScreen(
         navigator: DestinationsNavigator,
-        viewModel: StockListingViewModel
+        viewModel: StockListingViewModel = hiltViewModel()
 ){
         val swipeRefreshState = rememberSwipeRefreshState(isRefreshing = viewModel.state.isRefreshing)
         val state = viewModel.state
@@ -65,9 +66,11 @@ fun StockListingScreen(
                                                 modifier = Modifier
                                                         .fillMaxWidth()
                                                         .clickable {
-                                                                 navigator.navigate(
-                                                                         StockInfoScreenDestination(stock.symbol)
-                                                                 )
+                                                                navigator.navigate(
+                                                                        StockInfoScreenDestination(
+                                                                                stock.symbol
+                                                                        )
+                                                                )
                                                         }
                                                         .padding(16.dp)
                                         )
